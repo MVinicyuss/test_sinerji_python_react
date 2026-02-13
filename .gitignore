@@ -13,3 +13,21 @@ backend/*.pyc
 # OS
 .DS_Store
 Thumbs.db
+
+# Python cache (CRÍTICO)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtualenv
+venv/
+.venv/
+
+# Pytest / tooling cache
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# FastAPI / general Python
+*.log
