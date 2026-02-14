@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8000";
+const BASE_URL = import.meta.env.VITE_PYTHON_API_URL;
 
 export async function apiFetch<T>(
   endpoint: string,
