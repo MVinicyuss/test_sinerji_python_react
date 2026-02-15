@@ -1,4 +1,4 @@
-from .secutiry import (
+from .security import (
     create_access_token, 
     verify_password, 
     hash_password,
