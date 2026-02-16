@@ -13,6 +13,7 @@ export default function Register() {
   });
 
   const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setForm({
@@ -23,6 +24,7 @@ export default function Register() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setError(null);
 
     try {
       setLoading(true);
@@ -31,13 +33,12 @@ export default function Register() {
 
       console.log("Usuário criado:", user);
 
-      alert("Usuário cadastrado com sucesso!");
       navigate("/");
     } catch (error: unknown) {
       if (error instanceof Error) {
-        alert(error.message);
+        setError(error.message);
       } else {
-        alert("Erro inesperado");
+        setError("Erro inesperado");
       }
     } finally {
       setLoading(false);
@@ -47,6 +48,21 @@ export default function Register() {
   return (
     <div>
       <h1>Cadastro</h1>
+
+      {error && (
+        <div
+          style={{
+            backgroundColor: "#f8d7da",
+            color: "#721c24",
+            padding: "12px 16px",
+            borderRadius: "4px",
+            border: "1px solid #f5c6cb",
+            marginBottom: "16px",
+          }}
+        >
+          {error}
+        </div>
+      )}
 
       <form onSubmit={handleSubmit}>
         <div>

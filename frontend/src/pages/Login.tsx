@@ -12,6 +12,7 @@ export default function Login() {
   });
 
   const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setForm({
@@ -22,6 +23,7 @@ export default function Login() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setError(null);
 
     try {
       setLoading(true);
@@ -30,13 +32,12 @@ export default function Login() {
 
       localStorage.setItem("token", data.access_token);
 
-      alert("Login realizado com sucesso!");
       navigate("/home");
     } catch (error: unknown) {
       if (error instanceof Error) {
-        alert(error.message);
+        setError(error.message);
       } else {
-        alert("Erro desconhecido");
+        setError("Erro desconhecido");
       }
     } finally {
       setLoading(false);
@@ -46,6 +47,21 @@ export default function Login() {
   return (
     <div>
       <h1>Login</h1>
+
+      {error && (
+        <div
+          style={{
+            backgroundColor: "#f8d7da",
+            color: "#721c24",
+            padding: "12px 16px",
+            borderRadius: "4px",
+            border: "1px solid #f5c6cb",
+            marginBottom: "16px",
+          }}
+        >
+          {error}
+        </div>
+      )}
 
       <form onSubmit={handleSubmit}>
         <input
