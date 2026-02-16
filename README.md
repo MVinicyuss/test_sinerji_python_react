@@ -18,19 +18,13 @@ Aplicação Full Stack desenvolvida com FastAPI (backend), React + TypeScript (f
 
 ## Como Executar
 
-### 1. Clone o repositório e navegue até a pasta do projeto
-
-```bash
-cd Teste
-```
-
-### 2. Executar a aplicação
+### 1. Clone o repositório e execute a aplicação
 
 ```bash
 docker-compose up --build
 ```
 
-### 3. Acesse a aplicação
+### 2. Acesse a aplicação
 
 - **Frontend**: http://localhost (porta 80)
 - **Backend API**: http://localhost:8000
@@ -41,7 +35,6 @@ docker-compose up --build
 ## 📁 Estrutura do Projeto
 
 ```
-Teste/
 ├── backend/
 │   ├── Dockerfile
 │   ├── .dockerignore
